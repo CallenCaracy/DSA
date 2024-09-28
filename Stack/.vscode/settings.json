@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdbool.h": "c",
+        "mystack.h": "c",
+        "student.h": "c"
+    }
+}
