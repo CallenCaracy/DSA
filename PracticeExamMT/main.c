@@ -18,6 +18,7 @@ int main() {
     push(&s, createProd(1, "Tandaway", 104, 19.29));
     push(&s, createProd(3, "Marijuanna", 5, 10042.65));
     push(&s, createProd(4, "Black Tar Heroine", 32, 10223.59));
+    push(&s, createProd(4, "Black Tar Heroine", 1002, 10223.59));
     push(&s, createProd(2, "Shabu", 2, 29.99));
     push(&s, createProd(2, "Shabu", 91, 29.99));
     pop(&s);
