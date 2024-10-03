@@ -20,6 +20,7 @@ int main(void){
 
     getVoters(&s, &l, "Cebu");
     getVoters(&s, &l, "London");
+    getVoters(&s, &l, "Pitogo");
     visualizeStack(s);
     return 0;
 }
