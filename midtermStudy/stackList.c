@@ -86,10 +86,15 @@ void visualizeArray(ArrayList list){
     }
 }
 
-NodeType getVoters(Stack *s, ArrayList *list, char *cityTarget){
+void getVoters(Stack *s, ArrayList *list, char *cityTarget){
+
     for(int i = 0; i < list->max ; i++){
         if(strcmp(list->data[i].cityName, cityTarget) == 0){
-            push(s, list->data[i]);
+            // push(s, list->data[i]);
+            NodePtr temp = malloc(sizeof(NodeType));
+            temp->data = list->data[i];
+            temp->link = *s;
+            *s = temp;
         }
     }
 }

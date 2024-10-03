@@ -25,7 +25,7 @@ typedef struct node{
 void initList(ArrayList *list, int max);
 bool addPerson(ArrayList *list, Person p);
 void visualizeArray(ArrayList list);
-NodeType getVoters(Stack *s, ArrayList *list, char *cityTarget);
+void getVoters(Stack *s, ArrayList *list, char *cityTarget);
 
 void iniStack(Stack *s);
 Person peek(Stack s);
