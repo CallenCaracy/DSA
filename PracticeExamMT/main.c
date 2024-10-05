@@ -21,7 +21,7 @@ int main() {
     push(&s, createProd(4, "Black Tar Heroine", 1002, 10223.59));
     push(&s, createProd(2, "Shabu", 2, 29.99));
     push(&s, createProd(2, "Shabu", 91, 29.99));
-    pop(&s);
+    // pop(&s);
 
     visualizeStack(s);
 
@@ -29,9 +29,9 @@ int main() {
 
     visualizeDictionary(pd);
 
-    deleteDictionary(&pd, createProd(3, "Marijuanna", 5, 10042.65));
+    // deleteDictionary(&pd, createProd(3, "Marijuanna", 5, 10042.65));
 
-    visualizeDictionary(pd);
+    // visualizeDictionary(pd);
 
     while (!isEmpty(s)) {
         pop(&s);

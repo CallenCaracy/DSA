@@ -1,0 +1,114 @@
+String *getNames(PersonOpenDict d, String city){
+    String *s = malloc (sizeof(String) * d.count);
+    if(s == null){
+        return;
+    }
+    NodePtr temp = null;
+    int pos;
+    int count = 0;
+
+    for(int i = 0; i < 100; i++){
+        pos = hash(i);
+        temp = d.list[pos];
+        while(temp != null){
+            if(d.list[i]->p.id >= 1 && strcmp(d.list[i]->p.add.city, city) == 0){
+                if(d.list[i]->p.id > 100){
+                    temp = temp->link;
+                    continue;
+                }
+                strcpy(s[count], d.list[i]->p.name);
+                count++;
+            }
+            temp = temp->link;
+        }
+    }
+    s[count++] = " ";
+    return s;
+}
+
+
+
+void getVoters(PersonList vlist, StackLList *v, String city){
+    NodePtr temp;
+    
+    for(int i = 0; i < vlist.count; i++){
+        if(strcmp(vlist.list[i]->add.city, city) == 0){
+            temp = malloc(sizeof(NodeType));
+            temp->p = vlist.list[i];
+
+            temp->link = *v;
+            *v = temp;
+        }
+    }
+}
+
+Sting *getNames(PersonOpenDict d, String city){
+    String *names = malloc(sizeof(String) * d.count);
+    NodePtr curr;
+    int pos;
+    int count = 0;
+
+    for(int i = 0; i < 100; i++){
+        pos = hash(i);
+        curr = d.list[pos];
+
+        while(curr != NULL && curr->p.id <= 1){
+            if(strcmp(curr->data.p.add.city, city) == 0){
+                if(curr->data.p.id > 100){
+                    curr = curr->link;
+                    continue;
+                }
+                names[count] = malloc(sizeof(sizeof(char) * 100));
+                strcpy(names[count++], curr->p.name);
+
+                curr = curr->link;
+            }
+        }
+    }
+    names[count++] = " ";
+    return names;
+}
+
+void getUniqueNames(StackLList *s, QueuePersonLList *q){
+    NodePtr hold;
+    NodePtr temp;
+    NodePtr curr = *s;
+    int pos;
+    PersonClosedDict d;
+    d.count = 0;
+    d.max = MAX;
+    for(int i = 0; i < MAX; i++){
+        d.list[i] = NULL;
+    }
+
+    while(curr != NULL){
+        hold = curr;
+        curr = curr->link;
+
+        pos = hash(hold->p.id);
+
+        if(d.list[pos] != NULL){
+            continue;
+        }
+
+        hold->link = d.list[pos];
+        d.list[pos] = hold;
+        d.count++;
+    }
+
+    for(int i = 0; i < d.max; i++){
+        if(d.list[i] != NULL){
+            temp = malloc(sizeof(NodeType));
+            temp->p = d.list[i];
+            temp->link = NULL;
+
+            if(q->head == NULL){
+                q->head = temp;
+                q->tail = temp;
+            }else{
+                q->tail->link = temp;
+                q->tail = temp;
+            }
+        }
+    }
+}

@@ -159,27 +159,66 @@ Product getDictionary(ProdDict *pd, int prodID, String prodName){
 }
 
 // Create a function that converts a product stack into a dictionary. if similar product exist automatically adds it into the prodQty
+// void convertStackToDictionary(Stack *s, ProdDict *pd) {
+//     Stack curr = *s;
+//     Product p;
+//     Product found;
+
+//     while(curr != NULL){
+//         p = curr->prod;
+//         found = getDictionary(pd, p.prodID, p.prodName);
+
+//         if(found.prodID != 0){
+//             found.prodQty += p.prodQty;
+//             deleteDictionary(pd, found);
+//             insertDictionary(pd, found);
+//         }else{
+//             insertDictionary(pd, p);
+//         }
+//         curr = curr->link;
+//     }
+
+//     while(!isEmpty(*s)){
+//         pop(s);
+//     }
+// }
+
 void convertStackToDictionary(Stack *s, ProdDict *pd) {
     Stack curr = *s;
     Product p;
-    Product found;
+    Product find;
+    NodePtr currr;
+    NodePtr prev = NULL;
+    NodePtr temp;
+    int pos;
 
     while(curr != NULL){
         p = curr->prod;
-        found = getDictionary(pd, p.prodID, p.prodName);
+        pos = getHash(*pd, p);
+        currr = pd->data[pos];
+        prev = NULL;
+        
+        while(currr != NULL && currr->prod.prodID != p.prodID){
+            prev = currr;
+            currr = currr->link;
+        }
 
-        if(found.prodID != 0){
-            found.prodQty += p.prodQty;
-            deleteDictionary(pd, found);
-            insertDictionary(pd, found);
+        if(currr != NULL && currr->prod.prodID == p.prodID){
+            currr->prod.prodQty += p.prodQty;
         }else{
-            insertDictionary(pd, p);
+            temp = malloc(sizeof(NodeType));
+            temp->prod = p;
+
+            if(prev == NULL){
+                temp->link = pd->data[pos];
+                pd->data[pos] = temp;
+            }else{
+                prev->link = temp;
+                temp->link = currr;
+            }
+            pd->count++;
         }
         curr = curr->link;
-    }
-
-    while(!isEmpty(*s)){
-        pop(s);
     }
 }
 
