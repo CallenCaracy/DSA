@@ -197,13 +197,13 @@ void convertStackToDictionary(Stack *s, ProdDict *pd) {
         pos = getHash(*pd, p);
         currr = pd->data[pos];
         prev = NULL;
-        
+
         while(currr != NULL && currr->prod.prodID != p.prodID){
             prev = currr;
             currr = currr->link;
         }
 
-        if(currr != NULL && currr->prod.prodID == p.prodID){
+        if(currr->prod.prodID == p.prodID){
             currr->prod.prodQty += p.prodQty;
         }else{
             temp = malloc(sizeof(NodeType));
@@ -216,9 +216,7 @@ void convertStackToDictionary(Stack *s, ProdDict *pd) {
                 prev->link = temp;
                 temp->link = currr;
             }
-            pd->count++;
         }
-        curr = curr->link;
     }
 }
 
