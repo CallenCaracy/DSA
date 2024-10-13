@@ -10,7 +10,7 @@ void initTree(TreePtr *t){
 bool insertTree(TreePtr *t, int data){
     TreePtr *trav = t;
     while(*trav != NULL && (*trav)->data != data){
-        trav = ((*trav)->data < data) ? &(*trav)->right : &(*trav)->left ;
+        trav = ((*trav)->data < data) ? &(*trav)->right : &(*trav)->left;
     }
 
     if(*trav == NULL){
