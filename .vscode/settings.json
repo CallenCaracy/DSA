@@ -3,6 +3,7 @@
         "stdbool.h": "c",
         "stdlib.h": "c",
         "binarytree.h": "c",
-        "heaptree.h": "c"
+        "heaptree.h": "c",
+        "stdio.h": "c"
     }
 }
