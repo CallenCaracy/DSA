@@ -4,12 +4,11 @@
 #include <stdbool.h>
 
 typedef enum {
-    PM = 1, PD, M, D, ML, DL, MR, DR
+    M = 1, D, ML, DL, MR, DR, PM, PD
 }Entity;
 
 typedef struct{
-    int priority;
-    Entity trafficMov;
+    Entity lane;
     int time;
 }TrafficData;
 
@@ -19,14 +18,18 @@ typedef struct {
     int max;
 }BinaryHeapPriority, *HeapPtrPriority;
 
-char* translate(TrafficData data);
+TrafficData newData(int time, char *type);
+const char* translateEnumToChar(Entity lane);
+Entity charToEnum(char* c);
 void initBinaryHeap(HeapPtrPriority *head, int max);
 bool isEmpty(HeapPtrPriority head);
 bool isFull(HeapPtrPriority head);
-bool insert(HeapPtrPriority *head, int time, char *trafficMov);
+bool insert(HeapPtrPriority *head, TrafficData data);
 bool delete(HeapPtrPriority *head);
-void heapify(HeapPtrPriority *head, int i);
+void heapifyDown(HeapPtrPriority *head, int i);
 void visualize(HeapPtrPriority head);
-
+void writeFile(const HeapPtrPriority head);
+void readFile();
+int timeUntilPMCrosses(HeapPtrPriority head);
 
 #endif

@@ -8,21 +8,31 @@ int main(void){
     HeapPtrPriority heap;
     initBinaryHeap(&heap, 10);
 
-    insert(&heap, 5, "Light Traffic");
-    insert(&heap, 2, "Heavy Traffic");
-    insert(&heap, 8, "Moderate Traffic");
-    insert(&heap, 1, "No Traffic");
-    insert(&heap, 3, "Accident Ahead");
-    insert(&heap, 7, "Construction Zone");
-    insert(&heap, 6, "Rush Hour");
-    insert(&heap, 4, "Road Closure");
+    insert(&heap, newData(7, "PD"));
+    insert(&heap, newData(12, "MR"));
+    insert(&heap, newData(10, "D"));
+    insert(&heap, newData(8, "PM"));
+    insert(&heap, newData(11, "ML"));
+    insert(&heap, newData(13, "DL"));
+    insert(&heap, newData(13, "DR"));
+    insert(&heap, newData(16, "M"));
 
-    printf("Heap after inserting dummy data:\n");
     visualize(heap);
-
-    delete(&heap);
-    printf("\nHeap after deleting the root element:\n");
-    visualize(heap);
+    // printf("Time: %d", timeUntilPMCrosses(heap));
+    // delete(&heap);
+    // visualize(heap);
+    // printf("\n");
+    // delete(&heap);
+    // visualize(heap);
+    // printf("\n");
+    // delete(&heap);
+    // visualize(heap);
+    // printf("\n");
+    // delete(&heap);
+    // visualize(heap);
+    
+    // writeFile(heap);
+    readFile();
 
     return 0;
 }
