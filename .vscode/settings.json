@@ -4,6 +4,7 @@
         "stdlib.h": "c",
         "binarytree.h": "c",
         "heaptree.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "string.h": "c"
     }
 }
