@@ -6,13 +6,14 @@
 
 int main(void){
     int vertices = 4;
-    GraphPtr graph = createGraph(vertices);
+    GraphPtr graph = createGraph();
 
-    addEdge(graph, 0, 1);
-    addEdge(graph, 0, 2);
-    addEdge(graph, 1, 2);
-    addEdge(graph, 1, 3);
-    addEdge(graph, 2, 3);
+    addEdge(graph, createStud(1, "IT", "C-values"), createStud(4, "IT", "Clarence"));
+    addEdge(graph, createStud(5, "IT", "Balbacuasa"), createStud(6, "IT", "Raal"));
+    addEdge(graph, createStud(2, "IT", "Johnny Mark"), createStud(5, "IT", "Balbacuasa"));
+    addEdge(graph, createStud(3, "IT", "Kyer"), createStud(2, "IT", "Johnny Mark"));
+    addEdge(graph, createStud(4, "IT", "Clarence"), createStud(3, "IT", "Kyer"));
+    addEdge(graph, createStud(6, "IT", "Raal"), createStud(1, "IT", "C-values"));
 
     display(graph);
     return 0;
